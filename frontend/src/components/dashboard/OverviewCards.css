@@ -1,0 +1,107 @@
+.overview-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-card__label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+}
+
+.overview-card__value {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.overview-card__sub {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+.overview-card__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 10px;
+}
+
+.overview-card__mono {
+  font-family: var(--font-mono);
+  color: var(--color-text);
+}
+
+.overview-card__progress-track {
+  margin-top: 12px;
+  height: 8px;
+  border-radius: 999px;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.overview-card__progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background-color: var(--color-primary);
+}
+
+.overview-card__progress-label {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.overview-card__next-bill {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.overview-card__next-bill-title {
+  font-size: 13.5px;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.overview-card__next-bill-meta {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.overview-card__link {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.overview-card__link:hover {
+  text-decoration: underline;
+}
+
+.overview-card__button {
+  margin-top: 16px;
+  align-self: flex-start;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.overview-card__button:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}

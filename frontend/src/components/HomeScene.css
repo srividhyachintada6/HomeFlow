@@ -1,0 +1,983 @@
+.home-scene {
+  position: relative;
+  width: 100%;
+  height: 590px;
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* =========================================
+   AMBIENT LIGHT
+========================================= */
+
+.scene-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(35px);
+}
+
+.scene-glow--main {
+  width: 380px;
+  height: 380px;
+  left: 50%;
+  top: 18%;
+
+  transform: translateX(-50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(205, 218, 191, 0.55),
+      rgba(205, 218, 191, 0) 70%
+    );
+
+  animation: scene-glow 7s ease-in-out infinite;
+}
+
+.scene-glow--gold {
+  width: 220px;
+  height: 220px;
+  left: 66%;
+  top: 34%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(224, 185, 102, 0.3),
+      transparent 70%
+    );
+
+  filter: blur(45px);
+}
+
+@keyframes scene-glow {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.08);
+  }
+}
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.scene-orbit {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+
+  border: 1px solid rgba(201, 154, 62, 0.28);
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%)
+    rotateX(68deg);
+
+  pointer-events: none;
+}
+
+.scene-orbit--one {
+  width: 470px;
+  height: 220px;
+
+  animation: orbit-rotate 16s linear infinite;
+}
+
+.scene-orbit--two {
+  width: 560px;
+  height: 270px;
+
+  border-color: rgba(23, 61, 50, 0.12);
+
+  transform:
+    translate(-50%, -50%)
+    rotateX(68deg)
+    rotateZ(30deg);
+
+  animation: orbit-rotate-reverse 22s linear infinite;
+}
+
+.scene-orbit span {
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--color-secondary);
+
+  box-shadow:
+    0 0 12px rgba(201, 154, 62, 0.7);
+
+  top: -4px;
+  left: 50%;
+}
+
+@keyframes orbit-rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes orbit-rotate-reverse {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: -360deg;
+  }
+}
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.scene-particle {
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--color-secondary);
+
+  opacity: 0.55;
+
+  animation:
+    particle-float
+    5s
+    ease-in-out
+    infinite;
+}
+
+.scene-particle--1 {
+  top: 15%;
+  left: 24%;
+}
+
+.scene-particle--2 {
+  top: 10%;
+  right: 18%;
+  animation-delay: 1s;
+}
+
+.scene-particle--3 {
+  top: 48%;
+  left: 8%;
+  animation-delay: 2s;
+}
+
+.scene-particle--4 {
+  bottom: 22%;
+  right: 10%;
+  animation-delay: 1.5s;
+}
+
+.scene-particle--5 {
+  top: 65%;
+  left: 18%;
+  animation-delay: 2.5s;
+}
+
+.scene-particle--6 {
+  top: 28%;
+  right: 5%;
+  animation-delay: 3s;
+}
+
+.scene-particle--7 {
+  bottom: 12%;
+  left: 42%;
+  animation-delay: 0.7s;
+}
+
+.scene-particle--8 {
+  top: 35%;
+  left: 46%;
+  width: 3px;
+  height: 3px;
+}
+
+.scene-particle--9 {
+  top: 72%;
+  right: 30%;
+  width: 3px;
+  height: 3px;
+}
+
+.scene-particle--10 {
+  top: 18%;
+  left: 60%;
+  width: 3px;
+  height: 3px;
+}
+
+@keyframes particle-float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate(8px, -16px);
+    opacity: 0.8;
+  }
+}
+
+/* =========================================
+   STAGE
+========================================= */
+
+.scene-stage {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  perspective: 1400px;
+
+  transform-style: preserve-3d;
+}
+
+/* =========================================
+   PLATFORM
+========================================= */
+
+.scene-platform {
+  position: absolute;
+
+  width: 420px;
+  height: 95px;
+
+  left: 50%;
+  bottom: 13%;
+
+  transform:
+    translateX(-50%)
+    rotateX(58deg)
+    rotateZ(-3deg);
+
+  transform-style: preserve-3d;
+}
+
+.scene-platform__top {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #faf6ec,
+      #e9dfc8
+    );
+
+  border: 2px solid rgba(201, 154, 62, 0.4);
+
+  box-shadow:
+    0 20px 40px rgba(23, 61, 50, 0.14),
+    inset 0 2px 3px rgba(255, 255, 255, 0.9);
+
+  transform: translateZ(24px);
+}
+
+.scene-platform__inner {
+  position: absolute;
+
+  inset: 20px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      #b7c19b 0%,
+      #8c9c70 70%
+    );
+
+  box-shadow:
+    inset 0 4px 8px rgba(23, 61, 50, 0.18);
+}
+
+.scene-platform__base {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #c99a3e,
+      #9c7024
+    );
+
+  transform: translateZ(0);
+
+  filter: drop-shadow(
+    0 25px 30px rgba(23, 61, 50, 0.15)
+  );
+}
+
+/* =========================================
+   HOUSE
+========================================= */
+
+.smart-house {
+  position: absolute;
+
+  width: 230px;
+  height: 190px;
+
+  left: 50%;
+  bottom: 27%;
+
+  transform:
+    translateX(-50%)
+    rotateY(-18deg)
+    rotateX(3deg);
+
+  transform-style: preserve-3d;
+
+  animation:
+    house-hover
+    6s
+    ease-in-out
+    infinite;
+
+  z-index: 5;
+}
+
+@keyframes house-hover {
+  0%,
+  100% {
+    translate: -50% 0;
+  }
+
+  50% {
+    translate: -50% -9px;
+  }
+}
+
+/* Main body */
+
+.smart-house__body {
+  position: absolute;
+
+  left: 15px;
+  bottom: 0;
+
+  width: 200px;
+  height: 130px;
+
+  transform-style: preserve-3d;
+}
+
+.smart-house__front {
+  position: absolute;
+
+  width: 200px;
+  height: 130px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #34594d,
+      #173d32
+    );
+
+  border-radius: 3px;
+
+  box-shadow:
+    15px 25px 35px rgba(23, 61, 50, 0.28);
+
+  overflow: hidden;
+}
+
+.smart-house__side {
+  position: absolute;
+
+  right: -50px;
+
+  width: 50px;
+  height: 130px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #24493e,
+      #122f27
+    );
+
+  transform-origin: left center;
+
+  transform:
+    rotateY(55deg);
+
+  box-shadow:
+    15px 10px 30px rgba(23, 61, 50, 0.2);
+}
+
+/* =========================================
+   ROOF
+========================================= */
+
+.smart-house__roof {
+  position: absolute;
+
+  left: 3px;
+  top: -65px;
+
+  width: 225px;
+  height: 100px;
+
+  transform-style: preserve-3d;
+}
+
+.smart-house__roof-main {
+  position: absolute;
+
+  width: 220px;
+  height: 105px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d2a84e,
+      #a97a25
+    );
+
+  clip-path: polygon(
+    50% 0,
+    100% 65%,
+    95% 100%,
+    5% 100%,
+    0 65%
+  );
+
+  box-shadow:
+    0 15px 25px rgba(23, 61, 50, 0.2);
+}
+
+.smart-house__roof-side {
+  position: absolute;
+
+  right: -46px;
+  top: 32px;
+
+  width: 70px;
+  height: 75px;
+
+  background: #8e681f;
+
+  transform:
+    rotateY(55deg)
+    skewY(-8deg);
+}
+
+/* =========================================
+   WINDOWS
+========================================= */
+
+.scene-window {
+  position: absolute;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  gap: 2px;
+
+  width: 40px;
+  height: 38px;
+
+  padding: 3px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff3b8,
+      #d7a43b
+    );
+
+  border: 2px solid #c5a45b;
+
+  box-shadow:
+    0 0 22px rgba(224, 185, 102, 0.55);
+}
+
+.scene-window span {
+  background: rgba(255, 250, 215, 0.65);
+}
+
+.scene-window--one {
+  left: 35px;
+  top: 28px;
+}
+
+.scene-window--two {
+  right: 35px;
+  top: 28px;
+}
+
+.scene-window--side {
+  right: 2px;
+  top: 35px;
+  transform: rotateY(-20deg);
+}
+
+/* =========================================
+   DOOR
+========================================= */
+
+.smart-house__door {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 42px;
+  height: 65px;
+
+  transform: translateX(-50%);
+
+  border-radius: 7px 7px 0 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #b47c2c,
+      #6e481a
+    );
+
+  box-shadow:
+    inset 2px 0 rgba(255, 255, 255, 0.15);
+}
+
+.smart-house__door-handle {
+  position: absolute;
+
+  right: 7px;
+  top: 34px;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #f1d18a;
+}
+
+/* =========================================
+   BALCONY
+========================================= */
+
+.smart-house__balcony {
+  position: absolute;
+
+  right: 3px;
+  top: 52px;
+
+  width: 58px;
+  height: 32px;
+
+  border: 2px solid #d9c9a6;
+
+  border-bottom: 0;
+
+  display: flex;
+
+  justify-content: space-around;
+
+  transform: translateZ(3px);
+}
+
+.smart-house__balcony span {
+  width: 2px;
+
+  height: 28px;
+
+  background: #d9c9a6;
+}
+
+/* =========================================
+   STEPS
+========================================= */
+
+.smart-house__steps {
+  position: absolute;
+
+  bottom: -11px;
+  left: 50%;
+
+  width: 68px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.smart-house__steps span {
+  height: 6px;
+
+  border-radius: 2px;
+
+  background: #d8c69f;
+
+  box-shadow:
+    0 2px 4px rgba(23, 61, 50, 0.2);
+}
+
+.smart-house__steps span:first-child {
+  width: 68px;
+}
+
+.smart-house__steps span:last-child {
+  width: 52px;
+  align-self: center;
+}
+
+/* =========================================
+   CHIMNEY
+========================================= */
+
+.smart-house__chimney {
+  position: absolute;
+
+  top: -42px;
+  right: 45px;
+
+  width: 15px;
+  height: 38px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #34473f,
+      #172d27
+    );
+
+  z-index: -1;
+}
+
+/* =========================================
+   TREES
+========================================= */
+
+.scene-tree {
+  position: absolute;
+
+  width: 65px;
+  height: 120px;
+
+  bottom: 24%;
+
+  z-index: 4;
+
+  filter:
+    drop-shadow(
+      8px 15px 12px rgba(23, 61, 50, 0.16)
+    );
+}
+
+.scene-tree__bottom,
+.scene-tree__middle,
+.scene-tree__top {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #849766,
+      #435e46
+    );
+}
+
+.scene-tree__bottom {
+  width: 55px;
+  height: 55px;
+  bottom: 10px;
+  left: 4px;
+}
+
+.scene-tree__middle {
+  width: 48px;
+  height: 48px;
+  bottom: 43px;
+  left: 10px;
+}
+
+.scene-tree__top {
+  width: 38px;
+  height: 38px;
+  bottom: 70px;
+  left: 16px;
+}
+
+.scene-tree__trunk {
+  position: absolute;
+
+  width: 9px;
+  height: 35px;
+
+  bottom: 0;
+  left: 29px;
+
+  background: #76532c;
+}
+
+.scene-tree--left {
+  left: 20%;
+  transform: scale(0.9);
+}
+
+.scene-tree--right {
+  right: 13%;
+  transform: scale(1.05);
+}
+
+/* =========================================
+   FINANCE CARDS
+========================================= */
+
+.scene-card {
+  z-index: 15;
+
+  min-width: 155px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.93),
+      rgba(248, 243, 232, 0.84)
+    ) !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.8) !important;
+
+  backdrop-filter: blur(14px);
+
+  box-shadow:
+    0 25px 55px rgba(23, 61, 50, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.scene-card:hover {
+  box-shadow:
+    0 35px 70px rgba(23, 61, 50, 0.22) !important;
+}
+
+.scene-card--budget {
+  top: 10%;
+  left: 5%;
+  rotate: -5deg;
+}
+
+.scene-card--expense {
+  top: 7%;
+  right: 2%;
+  rotate: 4deg;
+}
+
+.scene-card--remaining {
+  bottom: 18%;
+  left: 20%;
+  rotate: 3deg;
+}
+
+.scene-card--grocery {
+  bottom: 8%;
+  right: 18%;
+  rotate: -4deg;
+}
+
+.scene-card--bills {
+  top: 43%;
+  right: -1%;
+  rotate: 5deg;
+}
+
+/* =========================================
+   SMALL FLOATING SYMBOLS
+========================================= */
+
+.scene-icon {
+  position: absolute;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 10px 25px rgba(23, 61, 50, 0.12);
+
+  color: var(--color-secondary);
+
+  animation:
+    small-float
+    5s
+    ease-in-out
+    infinite;
+}
+
+.scene-icon--leaf {
+  top: 27%;
+  left: 32%;
+}
+
+.scene-icon--home {
+  bottom: 28%;
+  right: 32%;
+
+  color: var(--color-forest);
+
+  animation-delay: 1s;
+}
+
+.scene-icon--gold {
+  top: 22%;
+  right: 28%;
+
+  animation-delay: 2s;
+}
+
+@keyframes small-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* =========================================
+   SHADOW
+========================================= */
+
+.scene-shadow {
+  position: absolute;
+
+  width: 330px;
+  height: 75px;
+
+  left: 50%;
+  bottom: 17%;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(23, 61, 50, 0.25),
+      transparent 70%
+    );
+
+  filter: blur(8px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+  .home-scene {
+    height: 520px;
+    transform: scale(0.92);
+  }
+}
+
+@media (max-width: 900px) {
+  .home-scene {
+    height: 500px;
+    transform: scale(0.88);
+    transform-origin: center top;
+  }
+
+  .scene-card--bills {
+    right: 2%;
+  }
+
+  .scene-tree--left {
+    left: 12%;
+  }
+
+  .scene-tree--right {
+    right: 8%;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-scene {
+    height: 400px;
+    transform: scale(0.68);
+    width: 145%;
+    margin-left: -22%;
+  }
+
+  .scene-card {
+    min-width: 135px;
+  }
+
+  .scene-card--budget {
+    left: 2%;
+  }
+
+  .scene-card--expense {
+    right: 0;
+  }
+
+  .scene-tree {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smart-house,
+  .scene-orbit,
+  .scene-particle,
+  .scene-icon {
+    animation: none;
+  }
+}

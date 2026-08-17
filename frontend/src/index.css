@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+:root {
+  --color-bg: #F7F5F1;
+  --color-surface: #FFFFFF;
+  --color-border: #E7E2D8;
+  --color-text: #23282B;
+  --color-text-muted: #6E7570;
+
+  --color-primary: #2F5D50;
+  --color-primary-light: #E4EDE9;
+
+  --color-secondary: #C99A3E;
+  --color-secondary-light: #F7ECD4;
+
+  --color-danger: #C1573D;
+  --color-danger-light: #F5E3DD;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --color-forest: #173D32;
+  --color-gold-soft: #E8D3A3;
+
+  --shadow-sm: 0 1px 2px rgba(35, 40, 43, 0.04), 0 1px 6px rgba(35, 40, 43, 0.03);
+  --shadow-md: 0 4px 16px rgba(35, 40, 43, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* =========================================
+   HOMEFLOW GLOBAL DARK MODE
+========================================= */
+
+body.homeflow-dark {
+  background: #11181f;
+  color: #e7edf0;
+}
+
+/* Main page backgrounds */
+body.homeflow-dark .dashboard,
+body.homeflow-dark .dashboard-page,
+body.homeflow-dark .page,
+body.homeflow-dark .budget-page,
+body.homeflow-dark .settings-page,
+body.homeflow-dark .expenses-page,
+body.homeflow-dark .bills-page,
+body.homeflow-dark .grocery-page,
+body.homeflow-dark .insights-page,
+body.homeflow-dark .profile-page {
+  color: #e7edf0;
+}
+
+/* Cards */
+body.homeflow-dark .card,
+body.homeflow-dark .dashboard-card,
+body.homeflow-dark .summary-card,
+body.homeflow-dark .budget-card,
+body.homeflow-dark .settings-card,
+body.homeflow-dark .expense-card,
+body.homeflow-dark .bill-card,
+body.homeflow-dark .grocery-card,
+body.homeflow-dark .insight-card,
+body.homeflow-dark .profile-card {
+  background: #1a242d;
+  border-color: #2b3944;
+  color: #e7edf0;
+}
+
+/* Headings */
+body.homeflow-dark h1,
+body.homeflow-dark h2,
+body.homeflow-dark h3,
+body.homeflow-dark h4,
+body.homeflow-dark h5,
+body.homeflow-dark h6 {
+  color: #edf3f5;
+}
+
+/* Text */
+body.homeflow-dark p,
+body.homeflow-dark span,
+body.homeflow-dark small {
+  color: #9baab2;
+}
+
+/* Buttons */
+body.homeflow-dark button {
+  border-color: #33434f;
+}
+
+/* Inputs */
+body.homeflow-dark input,
+body.homeflow-dark select,
+body.homeflow-dark textarea {
+  background: #1a242d;
+  color: #edf3f5;
+  border-color: #33434f;
+}
+
+/* Input placeholder */
+body.homeflow-dark input::placeholder,
+body.homeflow-dark textarea::placeholder {
+  color: #71818b;
+}
+
+/* Sidebar */
+body.homeflow-dark .sidebar,
+body.homeflow-dark .dashboard-sidebar {
+  background: #151e26;
+  border-color: #2b3944;
+}
+
+/* Sidebar text */
+body.homeflow-dark .sidebar h1,
+body.homeflow-dark .sidebar h2,
+body.homeflow-dark .sidebar h3,
+body.homeflow-dark .sidebar span,
+body.homeflow-dark .sidebar p {
+  color: #dce5e8;
+}
+
+/* Navigation */
+body.homeflow-dark .nav-item,
+body.homeflow-dark .sidebar-nav-item {
+  color: #a9b7be;
+}
+
+body.homeflow-dark .nav-item:hover,
+body.homeflow-dark .sidebar-nav-item:hover {
+  background: #202c35;
+  color: #ffffff;
+}
+
+/* Active navigation */
+body.homeflow-dark .nav-item.active,
+body.homeflow-dark .sidebar-nav-item.active {
+  background: #203d36;
+  color: #7ed6b8;
+}
+
+/* Tables */
+body.homeflow-dark table {
+  background: #1a242d;
+  color: #e7edf0;
+}
+
+body.homeflow-dark th {
+  background: #202c35;
+  color: #edf3f5;
+}
+
+body.homeflow-dark td {
+  border-color: #2b3944;
+  color: #aebbc1;
+}
+
+/* Modals */
+body.homeflow-dark .modal,
+body.homeflow-dark .budget-modal,
+body.homeflow-dark .modal-content {
+  background: #1a242d;
+  color: #e7edf0;
+  border-color: #33434f;
+}
+
+/* Dropdowns */
+body.homeflow-dark option {
+  background: #1a242d;
+  color: #edf3f5;
+}
+
+/* Borders */
+body.homeflow-dark hr {
+  border-color: #2b3944;
+}
+
+/* Light backgrounds */
+body.homeflow-dark .empty-state,
+body.homeflow-dark .info-banner,
+body.homeflow-dark .privacy-message {
+  background: #202c35;
+  border-color: #33434f;
+}
+
+/* Scrollbar */
+body.homeflow-dark::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.homeflow-dark::-webkit-scrollbar-track {
+  background: #11181f;
+}
+
+body.homeflow-dark::-webkit-scrollbar-thumb {
+  background: #344650;
+  border-radius: 10px;
+}
+}

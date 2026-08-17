@@ -1,0 +1,110 @@
+.expense-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(23, 40, 43, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.expense-modal {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 28px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.expense-modal__title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  color: var(--color-text);
+  margin-bottom: 18px;
+}
+
+.expense-modal__error {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+  font-size: 13px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+}
+
+.expense-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.expense-modal__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.expense-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.expense-modal__field label {
+  font-size: 12.5px;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.expense-modal__field input,
+.expense-modal__field select {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  outline: none;
+}
+
+.expense-modal__field input:focus,
+.expense-modal__field select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.expense-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.expense-modal__cancel {
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  font-size: 13.5px;
+  cursor: pointer;
+}
+
+.expense-modal__submit {
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.expense-modal__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

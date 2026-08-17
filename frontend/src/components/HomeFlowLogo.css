@@ -1,0 +1,84 @@
+.homeflow-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--color-forest);
+}
+
+.homeflow-logo__mark {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(231, 222, 202, 0.75)
+    );
+
+  border: 1px solid rgba(23, 61, 50, 0.1);
+
+  box-shadow:
+    0 8px 18px rgba(23, 61, 50, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.homeflow-logo:hover .homeflow-logo__mark {
+  transform: translateY(-2px) rotate(-2deg);
+
+  box-shadow:
+    0 12px 25px rgba(23, 61, 50, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.homeflow-logo__svg {
+  width: 76%;
+  height: 76%;
+  color: var(--color-forest);
+}
+
+.homeflow-logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.homeflow-logo__name {
+  font-family: var(--font-display);
+  font-size: 21px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-forest);
+}
+
+.homeflow-logo__name span {
+  color: var(--color-secondary);
+}
+
+.homeflow-logo__text small {
+  font-size: 8.5px;
+  line-height: 1.2;
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 640px) {
+  .homeflow-logo__text small {
+    display: none;
+  }
+
+  .homeflow-logo__name {
+    font-size: 19px;
+  }
+}

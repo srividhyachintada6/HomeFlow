@@ -1,0 +1,116 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: rgba(247, 245, 241, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__row {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar__link {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.navbar__link:hover {
+  color: var(--color-primary);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navbar__signin {
+  font-size: 14px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.navbar__signin:hover {
+  color: var(--color-primary);
+}
+
+.navbar__cta {
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.navbar__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.navbar__toggle span {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+}
+
+.navbar__mobile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .navbar__links--desktop,
+  .navbar__actions--desktop {
+    display: none;
+  }
+  .navbar__toggle {
+    display: flex;
+  }
+  .navbar__row {
+    padding: 16px 20px;
+  }
+  .navbar__mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px 20px 24px;
+    border-top: 1px solid var(--color-border);
+  }
+  .navbar__mobile-link {
+    font-size: 14.5px;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  .navbar__mobile-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 8px;
+  }
+}
