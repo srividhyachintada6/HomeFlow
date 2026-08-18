@@ -1,0 +1,31 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Backend - Maven
+backend/**/target/
+homeflow-backend/target/
+
+# Eclipse
+backend/.metadata/
+backend/**/.classpath
+backend/**/.project
+backend/**/.settings/
+
+homeflow-backend/.metadata/
+homeflow-backend/.classpath
+homeflow-backend/.project
+homeflow-backend/.settings/
+
+# Environment files
+.env
+frontend/.env
+backend/.env
+homeflow-backend/.env
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
