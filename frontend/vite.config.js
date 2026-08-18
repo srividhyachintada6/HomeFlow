@@ -2,7 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/HomeFlow/',
+  base: process.env.VERCEL ? '/' : '/HomeFlow/',
+
   plugins: [react()],
 
   server: {
