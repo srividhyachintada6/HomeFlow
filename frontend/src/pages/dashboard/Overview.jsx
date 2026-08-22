@@ -6,7 +6,7 @@ import SectionCard from '../../components/SectionCard'
 import BudgetCard from '../../components/dashboard/BudgetCard'
 import BillsOverviewCard from '../../components/dashboard/BillsOverviewCard'
 import GroceryOverviewCard from '../../components/dashboard/GroceryOverviewCard'
-import QuickActions from '../../components/dashboard/QuickActions'
+
 import './Overview.css'
 
 const currency = (n) =>
@@ -717,26 +717,7 @@ function Overview() {
 
       </div>
 
-      {/* =====================================================
-          QUICK ACTIONS
-      ===================================================== */}
-
-      <SectionCard title="Quick Actions">
-
-        <div className="overview__quick-heading">
-
-          <div>
-            <span>SHORTCUTS</span>
-            <p>
-              Keep your household finances moving.
-            </p>
-          </div>
-
-        </div>
-
-        <QuickActions />
-
-      </SectionCard>
+      
 
     </div>
   )

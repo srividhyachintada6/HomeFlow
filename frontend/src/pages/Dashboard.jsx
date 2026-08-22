@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import SummaryCard from '../components/SummaryCard'
 import SectionCard from '../components/SectionCard'
 import BackendTest from '../components/BackendTest'
@@ -5,12 +6,7 @@ import './Dashboard.css'
 
 // TEMP_MOCK_DATA — for visual development only. Replace with real API data
 // once the backend endpoints for expenses/budget/grocery/bills exist.
-const SUMMARY = {
-  budget: 3200,
-  spent: 2140,
-  remaining: 1060,
-  upcomingBillsTotal: 480,
-}
+
 
 const SPENDING_BY_CATEGORY = [
   { category: 'Rent', amount: 1200, percent: 100 },
@@ -20,12 +16,7 @@ const SPENDING_BY_CATEGORY = [
   { category: 'Dining', amount: 190, percent: 16 },
 ]
 
-const RECENT_EXPENSES = [
-  { id: 1, name: 'Whole Foods Market', category: 'Groceries', date: 'Aug 14', amount: 86.4 },
-  { id: 2, name: 'Electricity Bill', category: 'Utilities', date: 'Aug 12', amount: 64.2 },
-  { id: 3, name: 'Uber', category: 'Transport', date: 'Aug 11', amount: 18.5 },
-  { id: 4, name: "Trader Joe's", category: 'Groceries', date: 'Aug 9', amount: 42.1 },
-]
+
 
 const GROCERY_LIST = [
   { id: 1, item: 'Milk', done: false },
@@ -47,6 +38,40 @@ const currency = (n) =>
     maximumFractionDigits: 2,
   })
 function Dashboard() {
+  const [expenses, setExpenses] = useState([])
+const [budget, setBudget] = useState(0)
+  useEffect(() => {
+  fetch('http://localhost:8080/api/expenses?userId=1')
+    .then((response) => response.json())
+    .then((data) => setExpenses(data))
+    .catch((error) => console.error('Failed to load expenses:', error))
+
+  fetch('http://localhost:8080/api/budgets/user/1')
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.length > 0) {
+        setBudget(data[0].amount)
+      }
+    })
+    .catch((error) => console.error('Failed to load budget:', error))
+}, [])
+const SUMMARY = {
+  budget: budget,
+  spent: expenses.reduce((total, expense) => total + expense.amount, 0),
+  remaining: budget - expenses.reduce((total, expense) => total + expense.amount, 0),
+  upcomingBillsTotal: 480,
+}
+const spendingByCategory = expenses.reduce((result, expense) => {
+  const category = expense.category || 'Other'
+
+  if (!result[category]) {
+    result[category] = 0
+  }
+
+  result[category] += expense.amount
+
+  return result
+}, {})
   return (
     <div className="dashboard">
       <header className="dashboard__header">
@@ -64,14 +89,14 @@ function Dashboard() {
       <div className="dashboard__main-grid">
         <SectionCard title="Monthly Spending" action="View all">
           <div className="spending-list">
-            {SPENDING_BY_CATEGORY.map((row) => (
-              <div className="spending-row" key={row.category}>
+            {Object.entries(spendingByCategory).map(([category, amount]) => (
+              <div className="spending-row" key={category}>
                 <div className="spending-row__meta">
-                  <span>{row.category}</span>
-                  <span className="spending-row__amount">{currency(row.amount)}</span>
+                  <span>{category}</span>
+                  <span className="spending-row__amount">{currency(amount)}</span>
                 </div>
                 <div className="spending-row__track">
-                  <div className="spending-row__fill" style={{ width: `${row.percent}%` }} />
+                  <div className="spending-row__fill" style={{ width: '100%' }} />
                 </div>
               </div>
             ))}
@@ -80,7 +105,7 @@ function Dashboard() {
 
         <SectionCard title="Recent Expenses" action="View all">
           <ul className="expense-list">
-            {RECENT_EXPENSES.map((expense) => (
+            {expenses.map((expense) => (
               <li className="expense-row" key={expense.id}>
                 <div>
                   <p className="expense-row__name">{expense.name}</p>

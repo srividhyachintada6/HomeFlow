@@ -2,11 +2,9 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext(null)
 
-// TEMPORARY (Phase 1): Login.jsx isn't connected to the backend yet, so there
-// is no real session/JWT to read from. We check localStorage for a user
-// object in case one was set manually for testing, and otherwise treat the
-// user as logged out. We never fabricate a name — no confirmed user, no name.
 const STORAGE_KEY = 'homeflow_user'
+
+const API_URL = 'http://localhost:8080/api/auth'
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
@@ -26,10 +24,65 @@ export function AuthProvider({ children }) {
     }
   }, [user])
 
-  const logout = () => setUser(null)
+  const login = async (email, password) => {
+    const response = await fetch(`${API_URL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Login failed')
+    }
+
+    setUser(data.user)
+
+    return data.user
+  }
+
+  const register = async (name, email, password) => {
+    const response = await fetch(`${API_URL}/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Registration failed')
+    }
+
+    return data
+  }
+
+  const logout = () => {
+    setUser(null)
+  }
 
   return (
-    <AuthContext.Provider value={{ user, setUser, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        setUser,
+        login,
+        register,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   )
@@ -37,8 +90,10 @@ export function AuthProvider({ children }) {
 
 export function useAuth() {
   const ctx = useContext(AuthContext)
+
   if (!ctx) {
     throw new Error('useAuth must be used within an AuthProvider')
   }
+
   return ctx
 }
